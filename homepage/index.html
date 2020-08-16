@@ -11,7 +11,9 @@
     <!-- Bootstrap core CSS -->
     
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"/>
+       <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"/>
+        -->
+       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -95,37 +97,37 @@
 <div class="container-fluid marketing">
 <hr class="featurette-divider">
 
-<div class="row featurette " >
+<div class="row featurette  " data-aos="fade-right" data-aos-duration="900" >
   <div class="col-md-7">
     <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
     <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
   </div>
   <div class="col-md-5">
-    <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto"  src="./images/img/img2.jpg" alt="Generic placeholder image">
+    <img class="featurette-image img-fluid mx-auto "data-aos="zoom-in-up" data-aos-duration="900" data-src="holder.js/500x500/auto"  src="./images/img/img2.jpg" alt="Generic placeholder image">
   </div>
 </div>
 
-<hr class="featurette-divider">
+<hr class="featurette-divider" >
 
-<div class="row featurette " style="background-image: linear-gradient(90deg, #E1BEE7, white);">
+<div class="row featurette " data-aos="fade-left" data-aos-duration="900" style="background-image: linear-gradient(90deg, #E1BEE7, white);">
   <div class="col-md-7 order-md-2">
     <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
     <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
   </div>
   <div class="col-md-5 order-md-1">
-    <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" src="./images/img/img1.jpg" alt="Generic placeholder image" >
+    <img class="featurette-image img-fluid mx-auto" data-aos="zoom-in-up" data-aos-duration="900" data-src="holder.js/500x500/auto" src="./images/img/img1.jpg" alt="Generic placeholder image" >
   </div>
 </div>
 
 <hr class="featurette-divider">
 
-<div class="row featurette ">
+<div class="row featurette " data-aos="fade-right" data-aos-duration="900" >
   <div class="col-md-7">
     <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
     <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
   </div>
   <div class="col-md-5">
-    <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto"  src="./images/img/img4.jpg"  alt="Generic placeholder image">
+    <img class="featurette-image img-fluid mx-auto" data-aos="zoom-in-up" data-aos-duration="900" data-src="holder.js/500x500/auto"  src="./images/img/img4.jpg"  alt="Generic placeholder image">
   </div>
 </div>
 
@@ -208,6 +210,11 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
     crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+  AOS.init();
+</script>
+            
 </body>
 
 </html>
