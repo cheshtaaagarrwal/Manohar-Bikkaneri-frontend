@@ -28,7 +28,7 @@ var rootRef=firebase.database().ref().child("products");
       if(type=="cake")
       {
           $("#cakes").append(
-            "<div class='col-md-3' style='display:inline-block'><div class='card '  ><img src='"+image+"' class='card-img-top' alt='image'><div class='card-body' >"
+            "<div class='col-md-3' style='display:inline-block'><div class='card ' ><img src='"+image+"' class='card-img-top' alt='image'><div class='card-body' >"
             +"<h5 style='text-align:center;text-transform:uppercase;'>"+name+
             "</h5>"+"<p class='card-text' style='inline-block' >"+price+"<i class='fas fa-cart-plus' style='position:absolute;right:0; padding-right:10px;'>"+"</i>"+"</p>"+"</div></div></div>");
 
@@ -44,6 +44,31 @@ var rootRef=firebase.database().ref().child("products");
     
   });
 
+// contactus
+var firstname,lastname,email,comment;
+function ReadInput(){
+  firstname=document.getElementById('fname').value;
+  lastname=document.getElementById('lname').value;
+  email=document.getElementById('email').value;
+  comment=document.getElementById('comment').value;
+}
 
+ var contacts=firebase.database().ref().child("contacts");
+document.getElementById("submit").onclick=function(){
+  
+  ReadInput();
+
+  var newcontact=contacts.push();
+  firebase.database().ref('contacts/'+newcontact.key).set({
+     firstname:firstname,
+      lastname:lastname,
+    email:email,
+    comment:comment,
+  });
+  document.querySelector('.alert').style.display='block';
+  setTimeout(function(){
+    document.querySelector('.alert').style.display='none';
+  },2000);
+}
 
 

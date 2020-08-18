@@ -218,3 +218,11 @@
 .contact-form button:focus{
     box-shadow:none;
 }  
+.alert{
+  background-color: #79c879;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: none;
+}
