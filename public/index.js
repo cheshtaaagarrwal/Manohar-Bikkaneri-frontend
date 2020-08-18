@@ -30,7 +30,7 @@ var rootRef=firebase.database().ref().child("products");
           $("#biscuit").append(
             "<div class='col-md-3' style='display:inline-block; margin-bottom:20px'><div class='card ' ><img src='"+image+"' class='card-img-top' alt='image'><div class='card-body' >"
             +"<h5 style='text-align:center;text-transform:uppercase;'>"+name+
-            "</h5>"+"<p class='card-text' style='inline-block' >"+price+"<i class='fas fa-cart-plus' style='position:absolute;right:0; padding-right:10px;'>"+"</i>"+"</p>"+"</div></div></div>");
+            "</h5>"+"<p class='card-text' style='inline-block' >"+price+"<i class='fas fa-cart-plus' href='#signup' data-toggle='modal' data-target='.log-sign' style='position:absolute;right:0; padding-right:10px;'>"+"</i>"+"</p>"+"</div></div></div>");
 
                }
       if(type=="sweets")
@@ -70,5 +70,9 @@ document.getElementById("submit").onclick=function(){
     document.querySelector('.alert').style.display='none';
   },3000);
 }
+
+// function openmodel(){
+//   $('#myModal').modal('show');
+// }
 
 
