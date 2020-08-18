@@ -68,7 +68,7 @@ document.getElementById("submit").onclick=function(){
   document.querySelector('.alert').style.display='block';
   setTimeout(function(){
     document.querySelector('.alert').style.display='none';
-  },2000);
+  },3000);
 }
 
 
