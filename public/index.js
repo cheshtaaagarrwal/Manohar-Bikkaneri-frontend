@@ -29,8 +29,8 @@ var rootRef=firebase.database().ref().child("products");
       {
           $("#cakes").append(
             "<div class='col-md-3' style='display:inline-block'><div class='card '  ><img src='"+image+"' class='card-img-top' alt='image'><div class='card-body' >"
-            +"<h5 >"+name+
-            "</h5>"+"<p class='card-text' style='display:inline;'>"+price+"</p>"+"</div></div></div>");
+            +"<h5 style='text-align:center;text-transform:uppercase;'>"+name+
+            "</h5>"+"<p class='card-text' style='inline-block' >"+price+"<i class='fas fa-cart-plus' style='position:absolute;right:0; padding-right:10px;'>"+"</i>"+"</p>"+"</div></div></div>");
 
                }
       if(type=="beverage")
