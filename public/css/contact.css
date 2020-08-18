@@ -226,3 +226,7 @@
   margin-bottom: 10px;
   display: none;
 }
+iframe{
+  justify-content: center;
+  align-items: center;
+}
