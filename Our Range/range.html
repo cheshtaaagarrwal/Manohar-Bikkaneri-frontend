@@ -121,144 +121,41 @@
 
 
 
-<!-- Modal -->
-<div class="modal fade bs-modal-sm log-sign" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-        
-        <div class="bs-example bs-example-tabs">
-            <ul id="myTab" class="nav nav-tabs">
-              <li id="tab1" class=" active tab-style login-shadow "><a href="#signin" data-toggle="tab">Log In</a></li>
-              <li id="tab2" class=" tab-style "><a href="#signup" data-toggle="tab">Sign Up</a></li>
-              
-            </ul>
-        </div>
-      <div class="modal-body">
-        <div id="myTabContent" class="tab-content">
-       
-        <div class="tab-pane fade active in" id="signin">
-            <form class="form-horizontal">
-            <fieldset>
-            <!-- Sign In Form -->
-            <!-- Text input-->
-              
-               <div class="group">
-<input required="" class="input" type="text"><span class="highlight"></span><span class="bar"></span>
-    <label class="label" for="date">Email address</label></div>
-              
-              
-            <!-- Password input-->
-            <div class="group">
-<input required="" class="input" type="password"><span class="highlight"></span><span class="bar"></span>
-    <label class="label" for="date">Password</label>
-    </div>
-<em>minimum 6 characters</em>
-
-           <div class="forgot-link">
-            <a href="#forgot" data-toggle="modal" data-target="#forgot-password"> I forgot my password</a>
-            </div>
-            
-
-            <!-- Button -->
-            <div class="control-group">
-              <label class="control-label" for="signin"></label>
-              <div class="controls">
-                <button id="signin" name="signin" class="btn btn-primary btn-block">Log In</button>
-              </div>
-            </div>
-            </fieldset>
-            </form>
-        </div>
-          
-          
-        <div class="tab-pane fade" id="signup">
-            <form class="form-horizontal">
-            <fieldset>
-            <!-- Sign Up Form -->
-            <!-- Text input-->
-            <div class="group">
-<input required="" class="input" type="text"><span class="highlight"></span><span class="bar"></span>
-    <label class="label" for="date">First Name</label></div>
-            
-            <!-- Text input-->
-            <div class="group">
-<input required="" class="input" type="text"><span class="highlight"></span><span class="bar"></span>
-    <label class="label" for="tel">Contact</label></div>
-            
-            <!-- Password input-->
-            <div class="group">
-<input required="" class="input" type="text"><span class="highlight"></span><span class="bar"></span>
-    <label class="label" for="date">Email</label></div>
-
-    <div class="group2">
-<input required="" class="input" type="password"><span class="highlight"></span><span class="bar"></span>
-    <label class="label" for="date">Password</label></div>
-            
-            <!-- Text input-->
-            <div class="group">
-<input required="" class="input" type="password"><span class="highlight"></span><span class="bar"></span>
-    <label class="label" for="password">Confirm Password</label></div>
-              <em>1-8 Characters</em>
-            
-              
-            
-            
-            
-            <!-- Button -->
-            <div class="control-group">
-              <label class="control-label" for="confirmsignup"></label>
-              <div class="controls">
-                <button id="confirmsignup" name="confirmsignup" class="btn btn-primary btn-block">Sign Up</button>
-              </div>
-            </div>
-            </fieldset>
-            </form>
-      </div>
-    </div>
-      </div>
-      <!--<div class="modal-footer">
-      <center>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </center>
-      </div>-->
-    </div>
-  </div>
-</div>
-  
-   
-
-<!--modal2-->
-
-<div class="modal fade bs-modal-sm" id="forgot-password" tabindex="0" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-        <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Password will be sent to your email</h4>
-      </div>
-      <div class="modal-body">
-        <form class="form-horizontal">
-        <fieldset>
-        <div class="group">
-<input required="" class="input" type="text"><span class="highlight"></span><span class="bar"></span>
-    <label class="label" for="date">Email address</label></div>
-        
-        
-        <div class="control-group">
-              <label class="control-label" for="forpassword"></label>
-              <div class="controls">
-                <button id="forpasswodr" name="forpassword" class="btn btn-primary btn-block">Send</button>
-              </div>
-            </div>
-          </fieldset>
-            </form>
-          
-      </div>
-    </div>
-    
-  </div>
+<div class="text-center">
+	<!-- Button HTML (to Trigger Modal) -->
+	<a href="#myModal" class="trigger-btn" data-toggle="modal">Click to Open Login Modal</a>
 </div>
 
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade">
+	<div class="modal-dialog modal-login">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="avatar">
+					<img src="/examples/images/avatar.png" alt="Avatar">
+				</div>				
+				<h4 class="modal-title">Member Login</h4>	
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+				<form action="/examples/actions/confirmation.php" method="post">
+					<div class="form-group">
+						<input type="text" class="form-control" name="username" placeholder="Username" required="required">		
+					</div>
+     					<div class="form-group">
+						<input type="password" class="form-control" name="password" placeholder="Password" required="required">	
+					</div>        
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Login</button>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<a href="#">Forgot Password?</a>
+			</div>
+		</div>
+	</div>
+</div>
 
 <!-- login modal end -->
 
@@ -355,34 +252,43 @@
 <script type="text/javascript" src="js/counterup.js"></script>
 <script src="./index.js"></script>
 
-<script type="text/javascript">
-  $(window, document, undefined).ready(function() {
-
-  $('.input').blur(function() {
-    var $this = $(this);
-    if ($this.val())
-      $this.addClass('used');
-    else
-      $this.removeClass('used');
-  });
-  
-  });
 
 
-$('#tab1').on('click' , function(){
-    $('#tab1').addClass('login-shadow');
-   $('#tab2').removeClass('signup-shadow');
-});
+<div class="text-center">
+	<!-- Button HTML (to Trigger Modal) -->
+	<a href="#myModal" class="trigger-btn" data-toggle="modal">Click to Open Login Modal</a>
+</div>
 
-$('#tab2').on('click' , function(){
-    $('#tab2').addClass('signup-shadow');
-   $('#tab1').removeClass('login-shadow');
-
-
-});
-</script>
-
-
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade">
+	<div class="modal-dialog modal-login">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="avatar">
+					<img src="/examples/images/avatar.png" alt="Avatar">
+				</div>				
+				<h4 class="modal-title">Member Login</h4>	
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+				<form action="/examples/actions/confirmation.php" method="post">
+					<div class="form-group">
+						<input type="text" class="form-control" name="username" placeholder="Username" required="required">		
+					</div>
+     					<div class="form-group">
+						<input type="password" class="form-control" name="password" placeholder="Password" required="required">	
+					</div>        
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Login</button>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<a href="#">Forgot Password?</a>
+			</div>
+		</div>
+	</div>
+</div>
     
 
 </body>
