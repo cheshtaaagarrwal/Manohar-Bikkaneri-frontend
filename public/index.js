@@ -71,6 +71,35 @@ document.getElementById("submit").onclick=function(){
   },3000);
 }
 
+$("#btn-login").click(function()
+  {
+    var email=$("#exampleInputEmail").val();
+    var password=$("#exampleInputPassword").val();
+
+    if(email!=""&&password!=""){
+        var result = firebase.auth().signInWithEmailAndPassword(email,password);
+        result.catch(function(error)
+        {
+          var errorCode=error.code;
+          var errorMessage=error.message;
+          console.log(errorCode);
+          console.log(errorMessage);
+          window.alert("Message: "+ errorMessage);
+        });
+    }
+    else{
+      window.alert("Please fill out all fields.");
+    }
+  });
+
+  
+  firebase.auth().onAuthStateChanged(function(user){
+    if(user)
+    {
+      window.location.href="index.html";
+    }
+  });
+
 // function openmodel(){
 //   $('#myModal').modal('show');
 // }

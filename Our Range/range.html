@@ -46,9 +46,14 @@
                 <li class="nav-item black">
                     <a class="nav-link black" href="#">Contact us</a>
                 </li>
+                
                 <li class="nav-item black">
                     <a class="nav-link black" href="#">Order Online</a>
                 </li>
+                <li class="nav-item black">
+                  <a href="#myModal" class="trigger-btn nav-link black" data-toggle="modal">Login/signup</a>
+              </li>
+               
         </ul>
 
             
@@ -121,10 +126,7 @@
 
 
 
-<div class="text-center">
-	<!-- Button HTML (to Trigger Modal) -->
-	<a href="#myModal" class="trigger-btn" data-toggle="modal">Click to Open Login Modal</a>
-</div>
+
 
 <!-- Modal HTML -->
 <div id="myModal" class="modal fade">
@@ -134,25 +136,24 @@
 				<div class="avatar">
 					<img src="/examples/images/avatar.png" alt="Avatar">
 				</div>				
-				<h4 class="modal-title">Member Login</h4>	
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			</div>
-			<div class="modal-body">
-				<form action="/examples/actions/confirmation.php" method="post">
-					<div class="form-group">
-						<input type="text" class="form-control" name="username" placeholder="Username" required="required">		
-					</div>
-     					<div class="form-group">
-						<input type="password" class="form-control" name="password" placeholder="Password" required="required">	
-					</div>        
-					<div class="form-group">
-						<button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Login</button>
-					</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<a href="#">Forgot Password?</a>
-			</div>
+        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+      </div>
+      <form class="user">
+        <div class="form-group">
+          <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+        </div>
+        <div class="form-group">
+          <div class="custom-control custom-checkbox small">
+            <input type="checkbox" class="custom-control-input" id="customCheck">
+            <label class="custom-control-label" for="customCheck">Remember Me</label>
+          </div>
+        </div>
+        <a  class="btn btn-primary btn-user btn-block" id="btn-login">
+          Login
+        </a>
 		</div>
 	</div>
 </div>
@@ -251,45 +252,36 @@
 </script>
 <script type="text/javascript" src="js/counterup.js"></script>
 <script src="./index.js"></script>
+<script>
+firebase.auth().onAuthStateChanged(function(user){
+  if(user)
+  {
+   window.alert("hii");
+  }
+});
 
+$("#btn-login").click(function()
+{
+var email=$("#exampleInputEmail").val();
+var password=$("#exampleInputPassword").val();
 
-
-<div class="text-center">
-	<!-- Button HTML (to Trigger Modal) -->
-	<a href="#myModal" class="trigger-btn" data-toggle="modal">Click to Open Login Modal</a>
-</div>
-
-<!-- Modal HTML -->
-<div id="myModal" class="modal fade">
-	<div class="modal-dialog modal-login">
-		<div class="modal-content">
-			<div class="modal-header">
-				<div class="avatar">
-					<img src="/examples/images/avatar.png" alt="Avatar">
-				</div>				
-				<h4 class="modal-title">Member Login</h4>	
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			</div>
-			<div class="modal-body">
-				<form action="/examples/actions/confirmation.php" method="post">
-					<div class="form-group">
-						<input type="text" class="form-control" name="username" placeholder="Username" required="required">		
-					</div>
-     					<div class="form-group">
-						<input type="password" class="form-control" name="password" placeholder="Password" required="required">	
-					</div>        
-					<div class="form-group">
-						<button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Login</button>
-					</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<a href="#">Forgot Password?</a>
-			</div>
-		</div>
-	</div>
-</div>
-    
-
+if(email!=""&&password!=""){
+    var result = firebase.auth().signInWithEmailAndPassword(email,password);
+    result.catch(function(error)
+    {
+      var errorCode=error.code;
+      var errorMessage=error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
+      window.alert("Message: "+ errorMessage);
+    });
+}
+else{
+  window.alert("Please fill out all fields.");
+}
+});
+</script>
 </body>
 </html>
+
+
