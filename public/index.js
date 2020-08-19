@@ -28,7 +28,20 @@ firebase.auth().onAuthStateChanged(function(user){
   document.querySelector('#btn-logout').style.display='none';
   firebase.auth().signOut();
 });
+$("#sign").click(function()
+{
+var email=$("#exampleInputEmail1").val();
+var password=$("#exampleInputPassword1").val();
 
+  //Create User with Email and Password
+  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log(errorCode);
+    console.log(errorMessage);
+  });
+});
 
 
 $("#btn-login").click(function()
