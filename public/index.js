@@ -40,6 +40,7 @@ var password=$("#exampleInputPassword1").val();
     var errorMessage = error.message;
     console.log(errorCode);
     console.log(errorMessage);
+    window.alert("Message: "+ errorMessage);
   });
 });
 
