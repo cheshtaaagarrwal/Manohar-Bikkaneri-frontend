@@ -14,6 +14,41 @@
   firebase.initializeApp(firebaseConfig);
   firebase.auth.Auth.Persistence.LOCAL;
 
+firebase.auth().onAuthStateChanged(function(user){
+  if(user)
+  {
+    alert("log in successful");
+     document.querySelector('#btn-logout').style.display='block';
+  }
+});
+ $("#btn-logout").click(function () {
+  alert("logged out");
+  document.querySelector('#btn-logout').style.display='none';
+  firebase.auth().signOut();
+});
+
+
+
+$("#btn-login").click(function()
+{
+var email=$("#exampleInputEmail").val();
+var password=$("#exampleInputPassword").val();
+
+if(email!=""&&password!=""){
+    var result = firebase.auth().signInWithEmailAndPassword(email,password);
+    result.catch(function(error)
+    {
+      var errorCode=error.code;
+      var errorMessage=error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
+      window.alert("Message: "+ errorMessage);
+    });
+}
+else{
+  window.alert("Please fill out all fields.");
+}
+});
 
 var rootRef=firebase.database().ref().child("products");
    
@@ -54,7 +89,7 @@ function ReadInput(){
 }
 
  var contacts=firebase.database().ref().child("contacts");
-document.getElementById("submit").onclick=function(){
+document.querySelector("#submit").onclick=function(){
   
   ReadInput();
 

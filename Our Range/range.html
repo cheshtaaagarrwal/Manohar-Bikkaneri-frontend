@@ -28,7 +28,7 @@
     </button>
      
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="nav navbar-nav justify-content-end ml-auto ">
+        <ul class="nav navbar-nav justify-content-end ml-auto " id="options">
             <li class="nav-item">
                 <a class="nav-link black" href="#">Home</a>
             </li>
@@ -53,6 +53,9 @@
                 <li class="nav-item black">
                   <a href="#myModal" class="trigger-btn nav-link black" data-toggle="modal">Login/signup</a>
               </li>
+              <li class="nav-item black">
+                    <a class="nav-link black" id="btn-logout">logout</a>
+                </li>
                
         </ul>
 
@@ -252,35 +255,8 @@
 </script>
 <script type="text/javascript" src="js/counterup.js"></script>
 <script src="./index.js"></script>
-<script>
-firebase.auth().onAuthStateChanged(function(user){
-  if(user)
-  {
-   window.alert("hii");
-  }
-});
 
-$("#btn-login").click(function()
-{
-var email=$("#exampleInputEmail").val();
-var password=$("#exampleInputPassword").val();
 
-if(email!=""&&password!=""){
-    var result = firebase.auth().signInWithEmailAndPassword(email,password);
-    result.catch(function(error)
-    {
-      var errorCode=error.code;
-      var errorMessage=error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
-      window.alert("Message: "+ errorMessage);
-    });
-}
-else{
-  window.alert("Please fill out all fields.");
-}
-});
-</script>
 </body>
 </html>
 

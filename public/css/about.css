@@ -257,5 +257,7 @@ body {
 	background: #45aba6 !important;
 	outline: none;
 }
-
+#btn-logout{
+  display: none;
+}
 
