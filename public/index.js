@@ -105,7 +105,7 @@ function ReadInput(){
 }
 
  var contacts=firebase.database().ref().child("contacts");
-document.querySelector("#submit").onclick=function(){
+$("#submit").click(function(){
   
   ReadInput();
 
@@ -120,7 +120,7 @@ document.querySelector("#submit").onclick=function(){
   setTimeout(function(){
     document.querySelector('.alert').style.display='none';
   },3000);
-}
+});
 
 $("#btn-login").click(function()
   {
@@ -143,14 +143,7 @@ $("#btn-login").click(function()
     }
   });
 
-  
-  firebase.auth().onAuthStateChanged(function(user){
-    if(user)
-    {
-      window.location.href="index.html";
-    }
-  });
-
+ 
 // function openmodel(){
 //   $('#myModal').modal('show');
 // }
