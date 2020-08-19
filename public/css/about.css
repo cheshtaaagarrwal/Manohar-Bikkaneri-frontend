@@ -260,4 +260,7 @@ body {
 #btn-logout{
   display: none;
 }
+#log{
+  display: block;
+}
 

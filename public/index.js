@@ -18,11 +18,13 @@ firebase.auth().onAuthStateChanged(function(user){
   if(user)
   {
     alert("log in successful");
+    document.querySelector('#log').style.display='none';
      document.querySelector('#btn-logout').style.display='block';
   }
 });
  $("#btn-logout").click(function () {
   alert("logged out");
+  document.querySelector('#log').style.display='block';
   document.querySelector('#btn-logout').style.display='none';
   firebase.auth().signOut();
 });
