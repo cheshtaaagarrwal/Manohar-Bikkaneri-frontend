@@ -14,14 +14,6 @@
   firebase.initializeApp(firebaseConfig);
   firebase.auth.Auth.Persistence.LOCAL;
 
-firebase.auth().onAuthStateChanged(function(user){
-  if(user)
-  {
-    alert("log in successful");
-    document.querySelector('#log').style.display='none';
-     document.querySelector('#btn-logout').style.display='block';
-  }
-});
  $("#btn-logout").click(function () {
   alert("logged out");
   document.querySelector('#log').style.display='block';
@@ -66,6 +58,24 @@ else{
 }
 });
 
+function check(key){
+  firebase.auth().onAuthStateChanged(function(user){
+      if(!user)
+      {
+        alert("please login");
+      }
+      else{
+        firebase.database().ref('products/' + key).on('value', snapshot => {
+          var name=snapshot.val().name;
+          var price=snapshot.val().price;
+          
+          alert("1 "+name+" added");
+        });
+
+      }
+    });
+  }
+
 var rootRef=firebase.database().ref().child("products");
    
   rootRef.on("child_added",childSnap=>{
@@ -81,9 +91,9 @@ var rootRef=firebase.database().ref().child("products");
           $("#biscuit").append(
             "<div class='col-md-3' style='display:inline-block; margin-bottom:20px'><div class='card ' ><img src='"+image+"' class='card-img-top' alt='image'><div class='card-body' >"
             +"<h5 style='text-align:center;text-transform:uppercase;'>"+name+
-            "</h5>"+"<p class='card-text' style='inline-block' >"+price+"<i class='fas fa-cart-plus' href='#signup' data-toggle='modal' data-target='.log-sign' style='position:absolute;right:0; padding-right:10px;'>"+"</i>"+"</p>"+"</div></div></div>");
+            "</h5>"+"<p class='card-text' style='inline-block' >"+price+"<i class='fas fa-cart-plus' onclick=check('"+childSnap.key+"') style='position:absolute;right:0; padding-right:10px;'>"+"</i>"+"</p>"+"</div></div></div>");
 
-               }
+      }
       if(type=="sweets")
       {
           $("#sweets").append(
@@ -94,6 +104,7 @@ var rootRef=firebase.database().ref().child("products");
     // });
     
   });
+ 
 
 // contactus
 var firstname,lastname,email,comment;
@@ -143,9 +154,6 @@ $("#btn-login").click(function()
     }
   });
 
- 
-// function openmodel(){
-//   $('#myModal').modal('show');
-// }
+
 
 

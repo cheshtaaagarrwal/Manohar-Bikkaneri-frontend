@@ -296,6 +296,16 @@
 </script>
 <script type="text/javascript" src="js/counterup.js"></script>
 <script src="./index.js"></script>
+<script >
+  firebase.auth().onAuthStateChanged(function(user){
+  if(user)
+  {
+    alert("log in successful");
+    document.querySelector('#log').style.display='none';
+     document.querySelector('#btn-logout').style.display='block';
+  }
+});
+</script>
 
 
 </body>

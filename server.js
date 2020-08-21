@@ -22,6 +22,10 @@ app.get("/range",function(request, response){
     response.sendFile(__dirname  + "/Our Range/range.html");
 
 });
+app.get("/cart",function(request, response){
+    response.sendFile(__dirname  + "/Our Range/cart.html");
+});
+
 app.listen(3000,function(){
       console.log("Server started at 3000");
 });
