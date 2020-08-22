@@ -20,20 +20,34 @@
   document.querySelector('#btn-logout').style.display='none';
   firebase.auth().signOut();
 });
+ var users=firebase.database().ref().child("users");
 $("#sign").click(function()
 {
 var email=$("#exampleInputEmail1").val();
 var password=$("#exampleInputPassword1").val();
-
+var name=$("#name").val();
+var re_pass=$("#repeat-pass").val();
   //Create User with Email and Password
-  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+  if(password == re_pass)
+  {
+     firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
     console.log(errorCode);
     console.log(errorMessage);
     window.alert("Message: "+ errorMessage);
-  });
+    });
+     var newuser=users.push();
+    firebase.database().ref('users/'+newuser.key).set({
+       username:email,
+       password:password,
+       name:name,
+    });
+  }
+  else{
+    alert("passwords do not match");
+  }
 });
 
 
@@ -58,6 +72,7 @@ else{
 }
 });
 
+// adding cart
 function check(key){
   firebase.auth().onAuthStateChanged(function(user){
       if(!user)
@@ -68,7 +83,6 @@ function check(key){
         firebase.database().ref('products/' + key).on('value', snapshot => {
           var name=snapshot.val().name;
           var price=snapshot.val().price;
-          
           alert("1 "+name+" added");
         });
 
