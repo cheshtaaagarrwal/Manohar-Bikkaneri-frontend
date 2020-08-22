@@ -20,6 +20,8 @@
   document.querySelector('#btn-logout').style.display='none';
   firebase.auth().signOut();
 });
+
+
  var users=firebase.database().ref().child("users");
 $("#sign").click(function()
 {
@@ -43,7 +45,11 @@ var re_pass=$("#repeat-pass").val();
        username:email,
        password:password,
        name:name,
+       mycart: {
+        "pro1":"hello"
+        },
     });
+    
   }
   else{
     alert("passwords do not match");
@@ -66,6 +72,7 @@ if(email!=""&&password!=""){
       console.log(errorMessage);
       window.alert("Message: "+ errorMessage);
     });
+   
 }
 else{
   window.alert("Please fill out all fields.");
@@ -73,6 +80,7 @@ else{
 });
 
 // adding cart
+var currentkey;
 function check(key){
   firebase.auth().onAuthStateChanged(function(user){
       if(!user)
@@ -80,10 +88,26 @@ function check(key){
         alert("please login");
       }
       else{
+       var curruser = firebase.auth().currentUser;
+       curremail=user.email;
+       firebase.database().ref('users').on('value',snap=>{
+          snap.forEach(childsnap=>{
+            var cem=childsnap.child("username").val();
+            if(cem==curremail)
+            {
+               currentkey=childsnap.key;
+               firebase.database().ref('users/'+currentkey+'/mycart/'+key).set({
+                  key:key,
+                });
+            }
+          });
+
+       });
         firebase.database().ref('products/' + key).on('value', snapshot => {
           var name=snapshot.val().name;
           var price=snapshot.val().price;
           alert("1 "+name+" added");
+          
         });
 
       }
@@ -147,26 +171,26 @@ $("#submit").click(function(){
   },3000);
 });
 
-$("#btn-login").click(function()
-  {
-    var email=$("#exampleInputEmail").val();
-    var password=$("#exampleInputPassword").val();
+// $("#btn-login").click(function()
+//   {
+//     var email=$("#exampleInputEmail").val();
+//     var password=$("#exampleInputPassword").val();
 
-    if(email!=""&&password!=""){
-        var result = firebase.auth().signInWithEmailAndPassword(email,password);
-        result.catch(function(error)
-        {
-          var errorCode=error.code;
-          var errorMessage=error.message;
-          console.log(errorCode);
-          console.log(errorMessage);
-          window.alert("Message: "+ errorMessage);
-        });
-    }
-    else{
-      window.alert("Please fill out all fields.");
-    }
-  });
+//     if(email!=""&&password!=""){
+//         var result = firebase.auth().signInWithEmailAndPassword(email,password);
+//         result.catch(function(error)
+//         {
+//           var errorCode=error.code;
+//           var errorMessage=error.message;
+//           console.log(errorCode);
+//           console.log(errorMessage);
+//           window.alert("Message: "+ errorMessage);
+//         });
+//     }
+//     else{
+//       window.alert("Please fill out all fields.");
+//     }
+//   });
 
 
 
