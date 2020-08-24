@@ -149,9 +149,10 @@ var rootRef=firebase.database().ref().child("products");
           var name=snapshot.val().name;
           var price=snapshot.val().price;
           let product={
+            tag:name,
             name:name,
             price:price,
-            tag:name,
+           
             inCart:0
           }
          setItems(product);  
@@ -258,12 +259,12 @@ function manageQuantity() {
           console.log(cartItems);
           currentQuantity = decreaseButtons[i].parentElement.querySelector('span').textContent;
           console.log(currentQuantity);
-          currentProduct = decreaseButtons[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent.toLocaleLowerCase().replace(/ /g,'').trim();
+          currentProduct = decreaseButtons[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent;
           console.log(currentProduct);
 
           if( cartItems[currentProduct].inCart > 1 ) {
               cartItems[currentProduct].inCart -= 1;
-              cartNumbers(cartItems[currentProduct], "decrease");
+              cartnumbers(cartItems[currentProduct], "decrease");
               totalCost(cartItems[currentProduct], "decrease");
               localStorage.setItem('productsincart', JSON.stringify(cartItems));
               displayCart();
@@ -274,11 +275,11 @@ function manageQuantity() {
           console.log(cartItems);
           currentQuantity = increaseButtons[i].parentElement.querySelector('span').textContent;
           console.log(currentQuantity);
-          currentProduct = increaseButtons[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent.toLocaleLowerCase().replace(/ /g,'').trim();
+          currentProduct = increaseButtons[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent;
           console.log(currentProduct);
 
           cartItems[currentProduct].inCart += 1;
-          cartNumbers(cartItems[currentProduct]);
+          cartnumbers(cartItems[currentProduct]);
           totalCost(cartItems[currentProduct]);
           localStorage.setItem('productsincart', JSON.stringify(cartItems));
           displayCart();
@@ -297,8 +298,8 @@ function deleteButtons() {
 
   for(let i=0; i < deleteButtons.length; i++) {
       deleteButtons[i].addEventListener('click', () => {
-          productName = deleteButtons[i].parentElement.textContent.toLocaleLowerCase().replace(/ /g,'').trim();
-         
+          productName = deleteButtons[i].parentElement.textContent.trim();
+          console.log(productName);
           localStorage.setItem('cartnumbers', productNumbers - cartItems[productName].inCart);
           localStorage.setItem('totalCost', cartCost - ( cartItems[productName].price * cartItems[productName].inCart));
 
