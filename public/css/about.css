@@ -16,7 +16,7 @@ background-color: #5f0e7df0;
 }
 
   body{
-      padding-top: 90px;
+      padding-top: 130px;
       font-family: 'Dancing Script', cursive;
 background-color: #c0dff9;
   }
@@ -271,65 +271,10 @@ body {
     width: 100%;
 }
 
-.cart ion-icon {
-  vertical-align: bottom;
-  font-size: 20px;
-  padding-right: 5px;
-}
 
-.cart a {
-   background-color: royalblue;
-   color: #fff;
-   cursor: pointer;
-   text-decoration: none;
-}
 
-.container,
-.container-products {
-   display: flex;
-   justify-content: center;
-   flex-wrap: wrap;
-   margin-top: 50px;
-   padding-bottom: 100px;;
-}
 
-.image {
-   margin-right: 20px;
-   margin-left: 20px;
-   position: relative;
-   overflow: hidden;
-}
-
-.add-cart {
-   position: absolute;
-   width: 100%;
-   background-color: darkgrey;
-   transition: all 0.3s ease-in-out;
-   opacity: 0;
-   cursor: pointer;
-   text-align: center;
-}
-
-.image:hover .cart1,
-.image:hover .cart2,
-.image:hover .cart3,
-.image:hover .cart4 {
-   bottom: 50px;
-   opacity: 1;
-   padding: 10px;
-   text-decoration: none;
-}
-
-/* ----------------- CART PAGE --------------- */
-
-.container-products {
-   max-width: 650px;
-   justify-content: space-around;
-   margin: 0 auto;
-   margin-top: 50px;
-}
-
-.container-products ion-icon {
+ ion-icon {
    font-size: 25px;
    color: blue;
    margin-left: 10px;
@@ -339,45 +284,41 @@ body {
 
 .product-header {
    width: 100%;
-   max-width: 650px;
    display: flex;
    justify-content: flex-start;
-   border-bottom: 4px solid lightgray;
+  
    margin: 0 auto;
 }
 
-.product-title {
-   width: 45%;
-}
 
 .price {
-   width: 15%;
-   border-bottom: 1px solid lightgray;
+  
+ 
    display: flex;
    align-items: center;
+   margin: auto;
 }
 
 .quantity {
-   width: 30%;
-   border-bottom: 1px solid lightgray;
-   display: flex;
+  display: flex;
+ 
    align-items: center;
+   padding: 10px 0;
 }
 
 .total {
-   width: 10%;
-   border-bottom: 1px solid lightgray;
-   display: flex;
-   align-items: center;
+  margin: auto;
+  display: flex;
+
 }
 
 .product {
-   width: 45%;
+ 
    display: flex;
-   justify-content: space-around;
+ 
    align-items: center;
    padding: 10px 0;
-   border-bottom: 1px solid lightgray;
+ 
 }
 
 .product ion-icon {
@@ -389,6 +330,7 @@ body {
    width: 100%;
    display: flex;
    flex-wrap: wrap;
+   margin: auto;
 }
 
 .products img {
@@ -411,11 +353,7 @@ body {
 }
 
 @media(max-width: 500px) {
-   nav h2 {
-       width: 100%;
-       text-align: center;
-       margin-bottom: 10px;;
-   }
+
 
    .sm-hide {
        display: none;;
