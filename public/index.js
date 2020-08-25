@@ -159,6 +159,27 @@ var rootRef=firebase.database().ref().child("products");
          totalCost(product); 
     });
  }
+ function cartnumbers(product, action) {
+  let producNumbers = localStorage.getItem('cartnumbers');
+  producNumbers = parseInt(producNumbers);
+
+  let cartItems = localStorage.getItem('productsincart');
+  cartItems = JSON.parse(cartItems);
+
+  if( action ) {
+      localStorage.setItem("cartnumbers", producNumbers - 1);
+      document.querySelector('.cart span').textContent = producNumbers - 1;
+      console.log("action running");
+  } else if(producNumbers){
+    localStorage.setItem('cartnumbers',producNumbers+1);
+    document.querySelector('.cart span').textContent=producNumbers+1;
+  }
+  else{
+    localStorage.setItem('cartnumbers',1);
+    document.querySelector('.cart span').textContent=1;
+  }
+}
+
  function setItems(product){
   let cartItems=localStorage.getItem('productsincart');
   cartItems=JSON.parse(cartItems);
@@ -187,21 +208,15 @@ var rootRef=firebase.database().ref().child("products");
     document.querySelector('.cart span').textContent=producNumbers;
   }
  }
- function cartnumbers(){
-  let producNumbers= localStorage.getItem('cartnumbers');
-  producNumbers=parseInt(producNumbers);
-  if(producNumbers){
-    localStorage.setItem('cartnumbers',producNumbers+1);
-    document.querySelector('.cart span').textContent=producNumbers+1;
-  }
-  else{
-    localStorage.setItem('cartnumbers',1);
-    document.querySelector('.cart span').textContent=1;
-  }
- }
 
- function totalCost(product){
+
+ function totalCost(product,action){
      let cartCost=localStorage.getItem('totalCost');
+     if( action) {
+      cartCost=parseInt(cartCost);
+
+      localStorage.setItem("totalCost", cartCost - product.price);
+  } else
      if(cartCost!=null){
       cartCost=parseInt(cartCost);
       localStorage.setItem("totalCost",cartCost+product.price);
