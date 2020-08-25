@@ -239,16 +239,16 @@ console.log(cartItems);
       productContainer.innerHTML = '';
       Object.values(cartItems).map( (item, index) => {
           productContainer.innerHTML += 
-          `<div class="product col-md-4"  style="text-align: center;"><ion-icon name="close-circle"></ion-icon><img src="./images/${item.tag}.jpg" />
-              <span class="sm-hide ">${item.name}</span>
+          `<div class="product col-md-4 col-sm-3"  style="text-align: center; "><ion-icon name="close-circle"></ion-icon><img class="sm-hide" src="./images/${item.tag}.jpg" />
+              <span class=" ">${item.name}</span>
           </div>
-          <div class="price sm-hide col-md-2"  style="text-align: center;"><i class="fas fa-rupee-sign">  </i>&nbsp ${item.price}</div>
-          <div class="quantity col-md-4" style="text-align: center;align-items: center;">
+          <div class="price  col-md-2 col-sm-3"  style="text-align: center;"><i class="fas fa-rupee-sign">  </i>&nbsp ${item.price}</div>
+          <div class="quantity col-md-3 col-sm-3" style="text-align: center;align-items: center;">
               <ion-icon class="decrease  " name="arrow-dropleft-circle"></ion-icon>
                   <span>${item.inCart}</span>
               <ion-icon class="increase" name="arrow-dropright-circle"></ion-icon>   
           </div>
-          <div class="total md-col-2" style="text-align: center;align-items: center;"><i class="fas fa-rupee-sign"> </i>&nbsp ${item.inCart * item.price}</div>`;
+          <div class="total sm-hide md-col-3 col-sm-3" style="text-align: center;align-items: center;"><i class="fas fa-rupee-sign"> </i>&nbsp ${item.inCart * item.price}</div>`;
       });
 
       productContainer.innerHTML += `

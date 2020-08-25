@@ -136,48 +136,6 @@ background-color: #c0dff9;
 	margin-top:60px;
 }
 
-footer{
-  padding-top: 10px;
-  background-color: #1C2331;
-}
-
-
-ul{
-list-style-type: none;
-
-}
-.footer-links{
-  padding: 0;
-}
-.footer-title{
-  color: white;
-  font-size: large;
-  text-transform: uppercase;
-}
-.footer-line{
-
-width: 60px;
-margin-left: 0;
-font-weight: 20px;
-background-color: #EA80FC;
-}
-.fa{
-color: white;
-}
-.copy{
-justify-content: center;
-}
-#copyright{
-color: white;
-text-align: center;
-
-}
-.footer-links>li{
-color: white;
-}
-.footer-links >li>a{
-color: white;
-}
 body {
 	font-family: 'Varela Round', sans-serif;
 }
@@ -309,7 +267,7 @@ body {
 .total {
   margin: auto;
   display: flex;
-
+  padding: 10px 0;
 }
 
 .product {
