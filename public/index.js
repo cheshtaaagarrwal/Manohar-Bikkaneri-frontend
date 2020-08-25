@@ -149,6 +149,7 @@ var rootRef=firebase.database().ref().child("products");
           var name=snapshot.val().name;
           var price=snapshot.val().price;
           let product={
+            id:key,
             tag:name,
             name:name,
             price:price,
