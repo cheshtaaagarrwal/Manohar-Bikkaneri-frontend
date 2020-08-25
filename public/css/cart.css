@@ -1,203 +1,159 @@
-@import "compass/css3";
-/* I wanted to go with a mobile first approach, but it actually lead to more verbose CSS in this case, so I've gone web first. Can't always force things... Side note: I know that this style of nesting in SASS doesn't result in the most performance efficient CSS code... but on the OCD/organizational side, I like it. So for CodePen purposes, CSS selector performance be damned. */
-/* Global settings */
-/* Global "table" column settings */
- .product-image {
-	 float: left;
-	 width: 20%;
+.cart ion-icon {
+  vertical-align: bottom;
+  font-size: 20px;
+  padding-right: 5px;
 }
- .product-details {
-	 float: left;
-	 width: 37%;
+
+.cart a {
+   background-color: royalblue;
+   color: #fff;
+   cursor: pointer;
+   text-decoration: none;
 }
- .product-price {
-	 float: left;
-	 width: 12%;
+
+.container,
+.container-products {
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   margin-top: 50px;
+   padding-bottom: 100px;;
 }
- .product-quantity {
-	 float: left;
-	 width: 10%;
+
+.image {
+   margin-right: 20px;
+   margin-left: 20px;
+   position: relative;
+   overflow: hidden;
 }
- .product-removal {
-	 float: left;
-	 width: 9%;
+
+.add-cart {
+   position: absolute;
+   width: 100%;
+   background-color: darkgrey;
+   transition: all 0.3s ease-in-out;
+   opacity: 0;
+   cursor: pointer;
+   text-align: center;
 }
- .product-line-price {
-	 float: left;
-	 width: 12%;
-	 text-align: right;
+
+.image:hover .cart1,
+.image:hover .cart2,
+.image:hover .cart3,
+.image:hover .cart4 {
+   bottom: 50px;
+   opacity: 1;
+   padding: 10px;
+   text-decoration: none;
 }
-/* This is used as the traditional .clearfix class */
- .group:before, .shopping-cart:before, .column-labels:before, .product:before, .totals-item:before, .group:after, .shopping-cart:after, .column-labels:after, .product:after, .totals-item:after {
-	 content: '';
-	 display: table;
+
+/* ----------------- CART PAGE --------------- */
+
+.container-products {
+   max-width: 650px;
+   justify-content: space-around;
+   margin: 0 auto;
+   margin-top: 50px;
 }
- .group:after, .shopping-cart:after, .column-labels:after, .product:after, .totals-item:after {
-	 clear: both;
+
+.container-products ion-icon {
+   font-size: 25px;
+   color: blue;
+   margin-left: 10px;
+   margin-right: 10px;
+   cursor: pointer;
 }
- .group, .shopping-cart, .column-labels, .product, .totals-item {
-	 zoom: 1;
+
+.product-header {
+   width: 100%;
+   max-width: 650px;
+   display: flex;
+   justify-content: flex-start;
+   border-bottom: 4px solid lightgray;
+   margin: 0 auto;
 }
-/* Apply clearfix in a few places */
-/* Apply dollar signs */
- .product .product-price:before, .product .product-line-price:before, .totals-value:before {
-	 content: '$';
+
+.product-title {
+   width: 45%;
 }
-/* Body/Header stuff */
- body {
-	 padding: 0px 30px 30px 20px;
-	 font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	 font-weight: 100;
+
+.price {
+   width: 15%;
+   border-bottom: 1px solid lightgray;
+   display: flex;
+   align-items: center;
 }
- h1 {
-	 font-weight: 100;
+
+.quantity {
+   width: 30%;
+   border-bottom: 1px solid lightgray;
+   display: flex;
+   align-items: center;
 }
- label {
-	 color: #aaa;
+
+.total {
+   width: 10%;
+   border-bottom: 1px solid lightgray;
+   display: flex;
+   align-items: center;
 }
- .shopping-cart {
-	 margin-top: -45px;
+
+.product {
+   width: 45%;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   padding: 10px 0;
+   border-bottom: 1px solid lightgray;
 }
-/* Column headers */
- .column-labels label {
-	 padding-bottom: 15px;
-	 margin-bottom: 15px;
-	 border-bottom: 1px solid #eee;
+
+.product ion-icon {
+   cursor: pointer;
+   
 }
- .column-labels .product-image, .column-labels .product-details, .column-labels .product-removal {
-	 text-indent: -9999px;
+
+.products {
+   width: 100%;
+   display: flex;
+   flex-wrap: wrap;
 }
-/* Product entries */
- .product {
-	 margin-bottom: 20px;
-	 padding-bottom: 10px;
-	 border-bottom: 1px solid #eee;
+
+.products img {
+   width: 75px;
 }
- .product .product-image {
-	 text-align: center;
+
+.basketTotalContainer {
+   display: flex;
+   justify-content: flex-end;
+   width: 100%;
+   padding: 10px 0;
 }
- .product .product-image img {
-	 width: 100px;
+
+.basketTotalTitle {
+   width: 30%;
 }
- .product .product-details .product-title {
-	 margin-right: 20px;
-	 font-family: 'HelveticaNeue-Medium', 'Helvetica Neue Medium';
+
+.basketTotal {
+   width: 10%;
 }
- .product .product-details .product-description {
-	 margin: 5px 20px 5px 0;
-	 line-height: 1.4em;
+
+@media(max-width: 500px) {
+   nav h2 {
+       width: 100%;
+       text-align: center;
+       margin-bottom: 10px;;
+   }
+
+   .sm-hide {
+       display: none;;
+   }
+
+   .products,
+   .product-header {
+       justify-content: center;
+   }
+
+   .basketTotalContainer {
+       padding-right: 8%;
+   }
 }
- .product .product-quantity input {
-	 width: 40px;
-}
- .product .remove-product {
-	 border: 0;
-	 padding: 4px 8px;
-	 background-color: #c66;
-	 color: #fff;
-	 font-family: 'HelveticaNeue-Medium', 'Helvetica Neue Medium';
-	 font-size: 12px;
-	 border-radius: 3px;
-}
- .product .remove-product:hover {
-	 background-color: #a44;
-}
-/* Totals section */
- .totals .totals-item {
-	 float: right;
-	 clear: both;
-	 width: 100%;
-	 margin-bottom: 10px;
-}
- .totals .totals-item label {
-	 float: left;
-	 clear: both;
-	 width: 79%;
-	 text-align: right;
-}
- .totals .totals-item .totals-value {
-	 float: right;
-	 width: 21%;
-	 text-align: right;
-}
- .totals .totals-item-total {
-	 font-family: 'HelveticaNeue-Medium', 'Helvetica Neue Medium';
-}
- .checkout {
-	 float: right;
-	 border: 0;
-	 margin-top: 20px;
-	 padding: 6px 25px;
-	 background-color: #6b6;
-	 color: #fff;
-	 font-size: 25px;
-	 border-radius: 3px;
-}
- .checkout:hover {
-	 background-color: #494;
-}
-/* Make adjustments for tablet */
- @media screen and (max-width: 650px) {
-	 .shopping-cart {
-		 margin: 0;
-		 padding-top: 20px;
-		 border-top: 1px solid #eee;
-	}
-	 .column-labels {
-		 display: none;
-	}
-	 .product-image {
-		 float: right;
-		 width: auto;
-	}
-	 .product-image img {
-		 margin: 0 0 10px 10px;
-	}
-	 .product-details {
-		 float: none;
-		 margin-bottom: 10px;
-		 width: auto;
-	}
-	 .product-price {
-		 clear: both;
-		 width: 70px;
-	}
-	 .product-quantity {
-		 width: 100px;
-	}
-	 .product-quantity input {
-		 margin-left: 20px;
-	}
-	 .product-quantity:before {
-		 content: 'x';
-	}
-	 .product-removal {
-		 width: auto;
-	}
-	 .product-line-price {
-		 float: right;
-		 width: 70px;
-	}
-}
-/* Make more adjustments for phone */
- @media screen and (max-width: 350px) {
-	 .product-removal {
-		 float: right;
-	}
-	 .product-line-price {
-		 float: right;
-		 clear: left;
-		 width: auto;
-		 margin-top: 10px;
-	}
-	 .product .product-line-price:before {
-		 content: 'Item Total: $';
-	}
-	 .totals .totals-item label {
-		 width: 60%;
-	}
-	 .totals .totals-item .totals-value {
-		 width: 40%;
-	}
-}
- 
