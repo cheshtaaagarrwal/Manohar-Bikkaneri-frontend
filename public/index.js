@@ -79,6 +79,9 @@ else{
 }
 });
 
+
+
+
 // adding cart
 // var currentkey;
 // function check(key){
@@ -327,6 +330,43 @@ function deleteButtons() {
       })
   }
 }
+
+$("#checkout").click(function (){
+  let producNumbers = localStorage.getItem('cartnumbers');
+  producNumbers = parseInt(producNumbers);
+
+  firebase.auth().onAuthStateChanged(function(user){
+      if(!user)
+      {
+        alert("please login");
+      }
+
+      else{ if(producNumbers==0){
+    alert("Your Cart is empty");}
+  
+
+  else{
+    window.location.href="checkout/checkout-page.html"
+  }}
+
+     
+
+    });
+
+  
+  // if(producNumbers==0){
+  //   alert("Your Cart is empty");}
+  
+
+  // else{
+  //   window.location.href="checkout/checkout-page.html"
+  // }
+
+
+
+
+    
+});
 
 onLoadCartNumbers();
 displayCart();
