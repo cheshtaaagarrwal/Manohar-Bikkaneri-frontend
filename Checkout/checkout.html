@@ -21,10 +21,10 @@
         <div class="col-md-4 order-md-2 mb-4">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-muted">Your cart</span>
-            <span class="badge badge-secondary badge-pill">3</span>
+            <span class="badge badge-secondary badge-pill check-items">0</span>
           </h4>
-          <ul class="list-group mb-3">
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <ul class="list-group mb-3 proContainer">
+          <!--   <li class="list-group-item d-flex justify-content-between lh-condensed">
               <div>
                 <h6 class="my-0">Product name</h6>
                 <small class="text-muted">Brief description</small>
@@ -49,7 +49,7 @@
             <li class="list-group-item d-flex justify-content-between">
               <span>Total (USD)</span>
               <strong>$20</strong>
-            </li>
+            </li> -->
           </ul>
 
          
@@ -145,6 +145,7 @@
     <script src="../../assets/js/vendor/popper.min.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>
     <script src="../../assets/js/vendor/holder.min.js"></script>
+    <script src="/index.js"></script>
     <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function() {
@@ -167,6 +168,36 @@
         }, false);
       })();
     </script>
+    <script >
+      let productNumbers = localStorage.getItem('cartnumbers');
+      document.querySelector('.check-items').textContent=productNumbers;
+
+       let cartitems = localStorage.getItem('productsincart');
+      cartitems = JSON.parse(cartitems);
+       let Cart = localStorage.getItem("totalCost");
+       Cart = parseInt(Cart);
+       let proContainer = document.querySelector('.proContainer');
+       proContainer.innerHTML = '';
+       let carttotal = localStorage.getItem('totalCost');
+       carttotal = parseInt(carttotal);
+      Object.values(cartitems).map( (item, index) => {
+
+          proContainer.innerHTML +=
+           `<li class="list-group-item d-flex justify-content-between lh-condensed"><div>
+                <h6 class="my-0">${item.name}</h6>
+                <small class="text-muted">Quantity: ${item.inCart}</small>
+                </div>
+                <span class="text-muted">Rs ${item.price}</span>
+                </li>`   
+          
+       });
+        proContainer.innerHTML += ` <li class="list-group-item d-flex justify-content-between">
+           <span>Total (Rs)</span>
+              <strong>${carttotal}</strong>
+        </li>`
+
+    </script>
+
 
     
 
