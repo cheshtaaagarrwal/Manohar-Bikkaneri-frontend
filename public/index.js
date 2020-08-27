@@ -346,7 +346,7 @@ $("#checkout").click(function (){
   
 
   else{
-    window.location.href="checkout/checkout-page.html"
+    window.location.href="/checkout"
   }}
 
      

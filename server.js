@@ -29,6 +29,11 @@ app.get("/stores",function(request, response){
     response.sendFile(__dirname  + "/stores/stores.html");
 
 });
+app.get("/checkout",function(request, response){
+    response.sendFile(__dirname  + "/Checkout/checkout.html");
+
+});
+
 
 app.listen(3000,function(){
       console.log("Server started at 3000");
