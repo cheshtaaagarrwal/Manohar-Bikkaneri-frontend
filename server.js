@@ -33,6 +33,10 @@ app.get("/checkout",function(request, response){
     response.sendFile(__dirname  + "/Checkout/checkout.html");
 
 });
+app.get("/payment",function(request, response){
+    response.sendFile(__dirname  + "/Checkout/payment.html");
+
+});
 
 
 app.listen(3000,function(){
