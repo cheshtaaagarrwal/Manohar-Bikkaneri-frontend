@@ -28,6 +28,8 @@ $("#sign").click(function()
 var email=$("#exampleInputEmail1").val();
 var password=$("#exampleInputPassword1").val();
 var name=$("#name").val();
+
+var number=$("#number").val();
 var re_pass=$("#repeat-pass").val();
   //Create User with Email and Password
   if(password == re_pass)
@@ -45,6 +47,8 @@ var re_pass=$("#repeat-pass").val();
        username:email,
        password:password,
        name:name,
+       number:number,
+       address:-1
       //  mycart: {
       //   "pro1":"hello"
       //   },
@@ -330,6 +334,25 @@ function deleteButtons() {
       })
   }
 }
+// firebase.auth().onAuthStateChanged(function(user){
+//   if(user)
+//   {
+//     var user = firebase.auth().currentUser;
+// var useremail=user.email;
+
+
+// firebase.database().ref('users/' ).on("value",function(snapshot){
+//     snapshot.forEach(function(childsnap){
+//          if(useremail==childsnap.username){
+//           document.getElementById('firstName').value = snapshot.val().name;
+//           document.getElementById('contact').value = snapshot.val().number;
+//           document.getElementById('email').value = snapshot.val().username;
+//          }
+//     })
+  
+
+// });
+// }})
 
 $("#checkout").click(function (){
   let producNumbers = localStorage.getItem('cartnumbers');

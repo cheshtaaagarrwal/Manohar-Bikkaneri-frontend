@@ -114,10 +114,7 @@
               </div>
             </div>
             <hr class="mb-4">
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="same-address">
-              <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
-            </div>
+          
             <div class="custom-control custom-checkbox">
               <input type="checkbox" class="custom-control-input" id="save-info">
               <label class="custom-control-label" for="save-info">Save this information for next time</label>
@@ -142,9 +139,7 @@
     <script>
 
     	window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/vendor/holder.min.js"></script>
+    
     <script src="/index.js"></script>
     <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -197,7 +192,37 @@
         </li>`
 
     </script>
+<script>
+  firebase.auth().onAuthStateChanged(function(user){
+  if(user)
+  {
+    var user = firebase.auth().currentUser;
+console.log(user);
+useremail=user.email;
+console.log(useremail);
 
+
+firebase.database().ref('users/' ).on("value",function(snapshot){
+ 
+    snapshot.forEach(function(childsnap){
+      
+         if(useremail==childsnap.val().username){
+         
+          document.getElementById('firstName').value = childsnap.val().name;
+          document.getElementById('contact').value = childsnap.val().number;
+          document.getElementById('email').value = childsnap.val().username;
+          if(childsnap.val().address!="-1"){
+
+            document.getElementById('address').value = childsnap.val().address;
+          }
+         }
+
+    })
+  
+
+});
+}})
+</script>
 
     
 
