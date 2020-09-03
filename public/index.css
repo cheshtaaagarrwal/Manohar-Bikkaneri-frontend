@@ -17,6 +17,41 @@
       margin-right: 15px;
   }
 
+  .nav-item{
+    text-align: center;
+  }
+
+  .nav-link{
+    opacity: 0.75;
+    padding-bottom: 50px;
+  margin: 0px 10px;
+  display: inline-block;
+  position: relative;
+
+  }
+
+  .nav-link:hover {
+  opacity: 1;
+}
+
+.nav-link::before {
+  transition: 300ms;
+  height: 3px;
+  content: "";
+  position: absolute;
+  background-color: gold;
+}
+
+.nav-link-fade-up::before {
+   height: 0%;
+  width: 100%;
+  bottom: 0px;
+}
+
+.nav-link-fade-up:hover::before {
+  height: 3px;
+}
+
   body{
       padding-top: 126px;
       font-family: 'Dancing Script', cursive;
@@ -41,6 +76,8 @@ background-color: #c0dff9;
     margin-right: .75rem;
     margin-left: .75rem;
   }
+
+  
 .featurette-divider {
     margin: 2rem 0; /* Space out the Bootstrap <hr> more */
   }
