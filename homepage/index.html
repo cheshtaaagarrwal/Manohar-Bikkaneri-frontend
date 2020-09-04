@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Manohar Bikkaneri</title>
     <link href="./index.css" rel="stylesheet">
+    <link href="css/about.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     
     <!-- Bootstrap core CSS -->
@@ -43,14 +44,14 @@
                     <li class="nav-item black ">
                         <a class="nav-link black nav-link-fade-up" href="/contact">Contact us</a>
                     </li>
-                    <li class="nav-item black ">
+                    <!-- <li class="nav-item black ">
                         <a class="nav-link black nav-link-fade-up" href="#">Order Online</a>
-                    </li>
+                    </li> -->
 
                    
               <li class="nav-item dropdown black nav-link-fade-up">
         <a class="nav-link dropdown-toggle black" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          User
+          <i class="fa fa-user fa-fw" style="color: gold;"></i>User
         </a>
 
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -152,6 +153,91 @@
 
 </div><!-- /.container -->
 
+<!-- login modal -->
+
+<!-- Button trigger modal -->
+
+
+
+
+
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade">
+  <div class="modal-dialog modal-login">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="avatar">
+          <img src="./images/img/Picture1.png" alt="Avatar">
+        </div>  
+            
+        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+      </div>
+      <form class="user">
+        <div class="form-group">
+          <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+        </div>
+        <div class="form-group">
+          <div class="custom-control custom-checkbox small">
+            <input type="checkbox" class="custom-control-input" id="customCheck">
+            <label class="custom-control-label" for="customCheck">Remember Me</label>
+          </div>
+        </div>
+        <a  class="btn btn-primary btn-user btn-block" id="btn-login">
+          Login
+        </a>
+        <a  data-toggle="modal" data-dismiss="modal" data-target="#signup" class="btn btn-primary btn-user btn-block" >
+          Sign up
+        </a>
+    </div>
+  </div>
+</div>
+
+<!-- login modal end -->
+
+<div id="signup" class="modal fade">
+  <div class="modal-dialog modal-login">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="avatar">
+          <img src="./images/img/Picture1.png" alt="Avatar">
+        </div>  
+        <br>      
+        <h1 class="h4 text-gray-900 mb-4">Welcome!</h1>
+      </div>
+      <form class="user">
+        <div class="form-group">
+          <input type="text" class="form-control form-control-user" id="name" aria-describedby="emailHelp" placeholder="Enter name...">
+        </div>
+        <div class="form-group">
+          <input type="tel" class="form-control form-control-user" id="number" aria-describedby="emailHelp" placeholder="Enter number...">
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-control form-control-user" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control form-control-user" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control form-control-user" placeholder="Repeat Password" id="repeat-pass">
+        </div>
+        <div class="form-group">
+          <div class="custom-control custom-checkbox small">
+            <input type="checkbox" class="custom-control-input" id="customCheck">
+            <label class="custom-control-label" for="customCheck">Remember Me</label>
+          </div>
+        </div>
+        
+        <a id="sign" data-dismiss="#myModal"  data-toggle="modal" data-target="#modalRegisterForm" class="btn btn-primary btn-user btn-block" >
+          Sign up
+        </a>
+    </div>
+  </div>
+</div>
+
+
 <footer class=" animated slideInLeft" style="animation-delay:1s" >
     <!-- container start -->
     <div class="container">
@@ -229,6 +315,22 @@
   <script>
   AOS.init();
 </script>
+<script src="./index.js"></script>
+<script >
+  firebase.auth().onAuthStateChanged(function(user){
+  if(user)
+  {
+    var user = firebase.auth().currentUser;
+    alert("log in successful");
+
+    alert(user);
+    console.log(user.email);
+    document.querySelector('#log').style.display='none';
+     document.querySelector('#btn-logout').style.display='block';
+  }
+});
+</script>
+
             
 </body>
 
