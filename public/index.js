@@ -48,7 +48,10 @@ var re_pass=$("#repeat-pass").val();
        password:password,
        name:name,
        number:number,
-       address:-1
+       address:-1,
+       state:-1,
+       city:-1,
+       zip:-1
       //  mycart: {
       //   "pro1":"hello"
       //   },
@@ -168,22 +171,22 @@ var rootRef=firebase.database().ref().child("products");
     });
  }
  function cartnumbers(product, action) {
-  let producNumbers = localStorage.getItem('cartnumbers');
+  let producNumbers =localStorage.getItem('cartnumbers');
   producNumbers = parseInt(producNumbers);
 
-  let cartItems = localStorage.getItem('productsincart');
+  let cartItems =localStorage.getItem('productsincart');
   cartItems = JSON.parse(cartItems);
 
   if( action ) {
-      localStorage.setItem("cartnumbers", producNumbers - 1);
+     localStorage.setItem("cartnumbers", producNumbers - 1);
       document.querySelector('.cart span').textContent = producNumbers - 1;
       console.log("action running");
   } else if(producNumbers){
-    localStorage.setItem('cartnumbers',producNumbers+1);
+   localStorage.setItem('cartnumbers',producNumbers+1);
     document.querySelector('.cart span').textContent=producNumbers+1;
   }
   else{
-    localStorage.setItem('cartnumbers',1);
+   localStorage.setItem('cartnumbers',1);
     document.querySelector('.cart span').textContent=1;
   }
 }
@@ -208,7 +211,7 @@ var rootRef=firebase.database().ref().child("products");
 
   }
 
-  localStorage.setItem("productsincart",JSON.stringify(cartItems));
+ localStorage.setItem("productsincart",JSON.stringify(cartItems));
  }
  function onLoadCartNumbers(){
   let producNumbers=localStorage.getItem('cartnumbers');
@@ -223,21 +226,21 @@ var rootRef=firebase.database().ref().child("products");
      if( action) {
       cartCost=parseInt(cartCost);
 
-      localStorage.setItem("totalCost", cartCost - product.price);
+     localStorage.setItem("totalCost", cartCost - product.price);
   } else
      if(cartCost!=null){
       cartCost=parseInt(cartCost);
-      localStorage.setItem("totalCost",cartCost+product.price);
+     localStorage.setItem("totalCost",cartCost+product.price);
      }
      else{
-      localStorage.setItem("totalCost",product.price);
+     localStorage.setItem("totalCost",product.price);
      }
  }
  function displayCart() {
-  let cartItems = localStorage.getItem('productsincart');
+  let cartItems =localStorage.getItem('productsincart');
   cartItems = JSON.parse(cartItems);
 console.log(cartItems);
-  let cart = localStorage.getItem("totalCost");
+  let cart =localStorage.getItem("totalCost");
   cart = parseInt(cart);
 
   let productContainer = document.querySelector('.products');
@@ -274,7 +277,7 @@ function manageQuantity() {
   let increaseButtons = document.querySelectorAll('.increase');
   let currentQuantity = 0;
   let currentProduct = '';
-  let cartItems = localStorage.getItem('productsincart');
+  let cartItems =localStorage.getItem('productsincart');
   cartItems = JSON.parse(cartItems);
 
   for(let i=0; i < increaseButtons.length; i++) {
@@ -289,7 +292,7 @@ function manageQuantity() {
               cartItems[currentProduct].inCart -= 1;
               cartnumbers(cartItems[currentProduct], "decrease");
               totalCost(cartItems[currentProduct], "decrease");
-              localStorage.setItem('productsincart', JSON.stringify(cartItems));
+             localStorage.setItem('productsincart', JSON.stringify(cartItems));
               displayCart();
           }
       });
@@ -304,7 +307,7 @@ function manageQuantity() {
           cartItems[currentProduct].inCart += 1;
           cartnumbers(cartItems[currentProduct]);
           totalCost(cartItems[currentProduct]);
-          localStorage.setItem('productsincart', JSON.stringify(cartItems));
+         localStorage.setItem('productsincart', JSON.stringify(cartItems));
           displayCart();
       });
   }
@@ -312,9 +315,9 @@ function manageQuantity() {
 
 function deleteButtons() {
   let deleteButtons = document.querySelectorAll('.product ion-icon');
-  let productNumbers = localStorage.getItem('cartnumbers');
-  let cartCost = localStorage.getItem("totalCost");
-  let cartItems = localStorage.getItem('productsincart');
+  let productNumbers =localStorage.getItem('cartnumbers');
+  let cartCost =localStorage.getItem("totalCost");
+  let cartItems =localStorage.getItem('productsincart');
   cartItems = JSON.parse(cartItems);
   let productName;
   console.log(cartItems);
@@ -323,11 +326,11 @@ function deleteButtons() {
       deleteButtons[i].addEventListener('click', () => {
           productName = deleteButtons[i].parentElement.textContent.trim();
           console.log(productName);
-          localStorage.setItem('cartnumbers', productNumbers - cartItems[productName].inCart);
-          localStorage.setItem('totalCost', cartCost - ( cartItems[productName].price * cartItems[productName].inCart));
+         localStorage.setItem('cartnumbers', productNumbers - cartItems[productName].inCart);
+         localStorage.setItem('totalCost', cartCost - ( cartItems[productName].price * cartItems[productName].inCart));
 
           delete cartItems[productName];
-          localStorage.setItem('productsincart', JSON.stringify(cartItems));
+         localStorage.setItem('productsincart', JSON.stringify(cartItems));
 
           displayCart();
           onLoadCartNumbers();
@@ -355,7 +358,7 @@ function deleteButtons() {
 // }})
 
 $("#checkout").click(function (){
-  let producNumbers = localStorage.getItem('cartnumbers');
+  let producNumbers =localStorage.getItem('cartnumbers');
   producNumbers = parseInt(producNumbers);
 
   firebase.auth().onAuthStateChanged(function(user){

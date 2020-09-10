@@ -97,13 +97,13 @@
             <div class="row">
               <div class="col-md-5 mb-3">
                 <label for="country">State</label>
-                 <input type="text" class="form-control" id="State" required>
+                 <input type="text" class="form-control" id="state" required>
                 
                 
               </div>
               <div class="col-md-4 mb-3">
                 <label for="country">City</label>
-                 <input type="text" class="form-control" id="City" required>
+                 <input type="text" class="form-control" id="city" required>
               </div>
               <div class="col-md-3 mb-3">
                 <label for="zip">Zip</label>
@@ -122,7 +122,7 @@
             <hr class="mb-4">
 
             
-            <button class="btn btn-primary btn-lg btn-block" type="submit" formaction="/payment">Proceed to Pay</button>
+            <button class="btn btn-primary btn-lg btn-block" type="submit" id="pay" formaction="/payment">Proceed to Pay</button>
         </div>
       </div>
 </div>
@@ -164,16 +164,16 @@
       })();
     </script>
     <script >
-      let productNumbers = localStorage.getItem('cartnumbers');
+      let productNumbers =localStorage.getItem('cartnumbers');
       document.querySelector('.check-items').textContent=productNumbers;
 
-       let cartitems = localStorage.getItem('productsincart');
+       let cartitems =localStorage.getItem('productsincart');
       cartitems = JSON.parse(cartitems);
-       let Cart = localStorage.getItem("totalCost");
+       let Cart =localStorage.getItem("totalCost");
        Cart = parseInt(Cart);
        let proContainer = document.querySelector('.proContainer');
        proContainer.innerHTML = '';
-       let carttotal = localStorage.getItem('totalCost');
+       let carttotal =localStorage.getItem('totalCost');
        carttotal = parseInt(carttotal);
       Object.values(cartitems).map( (item, index) => {
 
@@ -211,8 +211,10 @@ firebase.database().ref('users/' ).on("value",function(snapshot){
           document.getElementById('firstName').value = childsnap.val().name;
           document.getElementById('contact').value = childsnap.val().number;
           document.getElementById('email').value = childsnap.val().username;
-          if(childsnap.val().address!="-1"){
-
+          if(childsnap.val().address!="-1" && childsnap.val().state!="-1" && childsnap.val().city!="-1" && childsnap.val().zip!="-1"){
+            document.getElementById('state').value = childsnap.val().state;
+            document.getElementById('city').value = childsnap.val().city;
+            document.getElementById('zip').value = childsnap.val().zip;
             document.getElementById('address').value = childsnap.val().address;
           }
          }
@@ -223,7 +225,7 @@ firebase.database().ref('users/' ).on("value",function(snapshot){
 });
 }})
 </script>
-
+<script src="/checkout.js"></script>
 
     
 
