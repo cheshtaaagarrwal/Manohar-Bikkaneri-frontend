@@ -38,7 +38,13 @@ app.get("/payment",function(request, response){
 
 });
 
+app.get("/account",function(request, response){
+    response.sendFile(__dirname  + "/MyAccount/acc.html");
 
-app.listen(3000,function(){
+});
+
+
+app.listen(3000,function()
+{
       console.log("Server started at 3000");
 });
