@@ -13,7 +13,7 @@ firebase.database().ref('users/' ).on("value",function(snapshot){
  
     snapshot.forEach(function(childsnap){
       
-         if(useremail==childsnap.val().username){
+         if(useremail==childsnap.val().username.toLowerCase()){
              rkey=childsnap.key;
          }
     
@@ -32,7 +32,6 @@ firebase.database().ref('users/' ).on("value",function(snapshot){
 firebase.database().ref('users/'+ rkey ).update({
     address : address,
      state:state,
-  
      city:city,
      zip:zip
   });
