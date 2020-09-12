@@ -205,9 +205,9 @@ console.log(useremail);
 firebase.database().ref('users/' ).on("value",function(snapshot){
  
     snapshot.forEach(function(childsnap){
-      
-         if(useremail==childsnap.val().username){
-         
+       
+         if(useremail==childsnap.val().username.toLowerCase()){
+          alert("dds");
           document.getElementById('firstName').value = childsnap.val().name;
           document.getElementById('contact').value = childsnap.val().number;
           document.getElementById('email').value = childsnap.val().username;
