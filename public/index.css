@@ -48,10 +48,13 @@
   bottom: 0px;
 }
 
-.nav-link-fade-up:hover::before {
+/* .nav-link-fade-up:hover::before {
   height: 3px;
+} */
+.nav-item:hover{
+  border: 2px solid gold;
+  border-radius: 30%;
 }
-
   body{
       padding-top: 126px;
       font-family: 'Dancing Script', cursive;
